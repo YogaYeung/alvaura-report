@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>网站诊断 · Alvaura</title>
+<link rel="stylesheet" href="assets/site.css">
+<link rel="stylesheet" href="assets/alvaura.css">
+</head>
+<body>
+<div class="topbar"><div class="topbar-in">
+  <a class="home" href="index.html">ALVAURA 报告</a><span class="sep">|</span>
+  <a href="summary.html">执行摘要</a><a href="market.html">市场洞察</a><a href="competitors.html">竞品拆解</a><a href="site-audit.html">网站诊断</a><a href="pricing.html">定价搭配</a><a href="usp.html">USP</a><a href="action-plan.html">落地指南</a>
+</div></div>
+
+<div class="hero">
+  <div class="hero-in">
+    <div class="eyebrow">Site Audit · 官网双端实勘</div>
+    <h1>alvaura.com 诊断：首页 / 系列页 / 详情页 / 购物车与结账 / 移动端 / 信任体系</h1>
+    <p class="sub">用真实浏览器在桌面（1440×900）和手机（390×844）两端逐页走了一遍，包括加购和填美国地址到结账最后一步。每条发现写清实测数据、截图、影响和改法，并标注是"稳定复现"还是"环境相关"。</p>
+    <p class="fine">测试环境：Chrome / Playwright · 2026-09-15 · 测试机语言 zh-CN（第三方支付按钮语言不作判断依据）· Shopify Ella 主题 7.1.0 · 已装应用：Judge.me 评价、Klarna、Instafeed、Tolstoy 视频/AI、AI Cart Max、Discos BOGO、Rockit 折扣、Snap 价格图标、Microsoft Clarity、17TRACK 订单查询；像素：GA4、Meta、TikTok（经 Shopify Web Pixels 加载）</p>
+  </div>
+</div>
+
+<div class="wrap">
+
+<div class="stats">
+  <div class="stat"><div class="n">5</div><div class="l">P0 · 直接损失订单或信任，两周内必改</div></div>
+  <div class="stat"><div class="n">8</div><div class="l">P1 · 明显拉低转化，1–2 个月内改</div></div>
+  <div class="stat"><div class="n">4</div><div class="l">P2 · 体验与 SEO 打磨</div></div>
+  <div class="stat"><div class="n">3</div><div class="l">复核后撤回的"问题"（诚实修正，见文末）</div></div>
+</div>
+
+<div class="callout danger">
+  <span class="ttl">一句话结论</span>
+  这个站的"骨架"是好的：Shopify 结账完整（PayPal / Google Pay / Klarna / 信用卡，美国地址标准运费免费且关税已含）、详情页有实拍视频和买家秀、有尺码表、有分期、有评价插件。问题全出在<b>"没把好东西摆出来"和"承诺没兑现"</b>：首屏推不能买的东西、导航 7 个入口是空页、15% 首单折扣没有领取方式、评价没有一条能证明是真买家、核心规格全部折叠、政策页互相打架。这些都不需要开发，大部分是后台设置和文案。
+</div>
+
+<details class="termbox">
+  <summary>术语速查</summary>
+  <div class="tb-in"><dl>
+    <dt>P0 / P1 / P2</dt><dd>优先级：P0 = 直接掉单或伤信任、两周内必改；P1 = 明显拉低转化；P2 = 打磨项。</dd>
+    <dt>稳定复现</dt><dd>桌面和手机、首次访问和再次访问都出现，不依赖 cookie 或地区。</dd>
+    <dt>Hero / 首屏</dt><dd>打开网页不滚动就看到的第一屏大图区。</dd>
+    <dt>CTA</dt><dd>行动按钮（Shop now / Add to cart）。</dd>
+    <dt>PDP / PLP</dt><dd>商品详情页 / 系列列表页。</dd>
+    <dt>Sticky add-to-cart</dt><dd>手机端滚动时固定在屏幕底部的加购条。</dd>
+    <dt>Verified buyer</dt><dd>评价插件根据真实订单打的"已验证购买"标记。</dd>
+    <dt>H1 / alt</dt><dd>网页主标题标签 / 图片的文字说明——Google 靠这两样理解页面。</dd>
+    <dt>Web Pixels</dt><dd>Shopify 新版像素加载方式，Meta/TikTok 像素通过它加载，在网页源码里看不到传统脚本。</dd>
+  </dl></div>
+</details>
+
+<h2>一、首页</h2>
+
+<div class="finding">
+  <h3><span class="sev p0">P0-1</span>首屏推的是"即将上市"款，按钮点了没反应</h3>
+  <div class="ev"><b>实测：</b>首屏整幅是 "NEW IN · GEM STACKER · COMING SOON"，COMING SOON 是一个没有 href 的链接（脚本读取 href=null），桌面和手机都一样，首访和复访都一样——<b>稳定复现</b>。首屏之下才是 4 个类目图块和 "Most Loved"。</div>
+  <div class="shot"><img loading="lazy" src="assets/shots/evidence_home_hero_desktop.jpg" alt="Alvaura 首页首屏：手部特写叠戴戒，文字 NEW IN GEM STACKER，灰色 COMING SOON 按钮"></div>
+  <p class="shotcap">桌面首屏实拍。图片本身很好（手部实拍、叠戴场景），但整个第一屏没有任何可以点进去买的东西。</p>
+  <div class="impact"><b>影响：</b>首屏是流量最大的位置，广告点进来的人第一眼看到的是"还买不到"。竞品六家首屏全部是可购买主推款 + 明确按钮（见竞品对照矩阵）。</div>
+  <div class="fix"><b>改法：</b>首屏换成评价最多的主力款（Tidal Lagoon / Misty Cornflower / Vivid Mint 三选一或轮播），文案用 USP 页的 "Color, at full size."，按钮 "Shop Gemstone Rings"。即将上市款放第二屏做 "Coming soon · Notify me" 收邮件。Shopify 后台：Online Store → Themes → Customize → 首页 Slideshow 区块。</div>
+</div>
+
+<div class="finding">
+  <h3><span class="sev p0">P0-2</span>"首单 15% 折扣"没有任何领取方式，游客结账实测无折扣</h3>
+  <div class="ev"><b>实测：</b>公告栏写 "Enjoy 15% OFF your first order + FREE Standard Shipping"。全站源码无弹窗应用、无邮件营销系统（Klaviyo / Shopify Email 均未检测到）、无折扣码文案；后台存在一个叫 "15 % OFF First Order" 的集合（67 个商品），但集合页无任何说明。以游客身份把 $259 的戒指加入购物车进入结账：小计 $259.00、折扣 0、总计 $259.00。</div>
+  <div class="shot tall short"><img loading="lazy" src="assets/shots/checkout_shipping_us_desktop.jpg" alt="Alvaura 结账页：填入纽约地址后，Standard FREE 5–10 天关税已含，Express Upgrade 原价 $19.90 显示 FREE，小计 $259 总计 $259 无折扣"></div>
+  <p class="shotcap">结账页实测（纽约地址）：运费免、关税含，但公告栏承诺的 15% 不在任何地方出现。</p>
+  <div class="impact"><b>影响：</b>承诺不兑现是信任损耗；同时这是最便宜的邮件收集机会——Missoma、Monica Vinader、Indigo Lune 都靠"首单折扣换邮箱"建立名单。</div>
+  <div class="fix"><b>改法：</b>装 Shopify Email 或 Klaviyo（两者都有免费档），首访 8 秒后弹窗"Get 15% off your first order"收邮箱 → 自动发码 WELCOME15；Shopify 后台 Discounts 建 15% 折扣码限"每客户一次"。公告栏改成 "Get 15% off your first order — join the list"。</div>
+</div>
+
+<div class="finding">
+  <h3><span class="sev p0">P0-3</span>导航里 7 个入口点进去是"No products found"</h3>
+  <div class="ev"><b>实测：</b>68 个集合里 12 个商品数为 0；其中从主导航能点到的：NEW（顶部一级菜单 + 首页第 4 个类目图块）、Shop by Color 下的 Paraiba Blue / Padparadscha Peachy Pink / Cornflower Blue / Morgan Pink、Shop by Stone Shape 下的 Asscher / Marquise、NEW 下的 New Gemstones。逐个访问全部返回空页 "No products found"。另有 3 个测试集合 "Gem - $269 / $289 / $389" 和 "best b"，以及一个页面叫 "size-guide的副本"（中文"副本"二字进了 URL）。</div>
+  <div class="impact"><b>影响：</b>用户点 NEW 看到空页会直接离开；颜色菜单是 Alvaura 最该卖的入口，一半是空的。Google 也会把这些空页当低质量页面。</div>
+  <div class="fix"><b>改法：</b>后台 Products → Collections：把商品按 tag 归进对应颜色集合（Paraiba Blue 有 2 款、Padparadscha 1 款、Cornflower 2 款、Morganite 2 款都在售）；Asscher / Marquise / Ruby / Hidden Diamonds / Gift Picks 暂无商品的从导航移除；删除 best b 和 3 个 "Gem - $" 测试集合；NEW 集合改成自动规则"创建时间 ≤ 90 天"。</div>
+</div>
+
+<div class="finding">
+  <h3><span class="sev p1">P1-1</span>首页没有 H1，18 张图 alt 为空或写着 "Image"</h3>
+  <div class="ev"><b>实测：</b>首页唯一的 h1 标签是 logo 链接，里面的图片 alt="Image"；首屏大图 alt 为空；18 张图 alt 为空或 "Image"。页面标题 "Alvaura | Lab-Grown Gemstone Jewelry for Everyday Radiance" 把搜索量最小的词放最前。</div>
+  <div class="fix"><b>改法：</b>首屏加文字 H1（"Lab-Grown Sapphire Rings in Full Color" 之类，含 sapphire ring）；为所有商品图和类目图补 alt；标题改为 "Sapphire & Gemstone Rings, Lab-Grown | Alvaura"。</div>
+</div>
+
+<div class="finding">
+  <h3><span class="sev p1">P1-2</span>信任信息全在页面最底部，首屏和中段一句都没有</h3>
+  <div class="ev"><b>实测：</b>"Free shipping / 30-Days Returns / 2-Year Warranty / Pay with Klarna" 四个图标位于首页倒数第二区（滚动 4,300 像素以后）。公告栏只有一条促销。2.5 微米包金、关税已含、真宝石这三条最能打消顾虑的信息首页出现 0 次（"14k Vermeil & Hand-Set" 有一句但没写微米）。</div>
+  <div class="shot tall short"><img loading="lazy" src="assets/shots/home_desktop_full.jpg" alt="Alvaura 首页桌面全页截图"></div>
+  <p class="shotcap">首页全页（可滚动）：结构是 首屏 → 类目 → Most Loved → 三图 → 三卖点 → 叠戴戒 → 买家秀视频 → 信任图标 → 页脚。信任图标在倒数第二。</p>
+  <div class="fix"><b>改法：</b>公告栏改成 4 条轮播（见 USP 页）；把信任图标区上移到 Most Loved 下方；三卖点区加数字（2.5 μm / 2–4 ct / 2-year）。</div>
+</div>
+
+<h2>二、系列页（Gemstone Rings）</h2>
+
+<div class="finding">
+  <h3><span class="sev p1">P1-3</span>卡片上没有评分、没有标签、没有石头尺寸，只有名字和价格</h3>
+  <div class="ev"><b>实测：</b>桌面 3 列 / 手机 2 列（通用布局，不算缺陷），20 款，左侧筛选完整（Band Design / Metal / Gemstone / Cut / Color / Size / Price / Availability），有排序。但卡片只有：图 + 61 字的长名 + 价格 + 金属色块；无星级（Judge.me 已装但卡片徽章没开）、无 Best Seller / New / Ready to Ship 标签（只有 1 个 Sale 标）、无克拉/毫米。价格文案在读屏器里读作 "Regular price $289.00 USD"。</div>
+  <div class="shot tall short"><img loading="lazy" src="assets/shots/collection_desktop_full.jpg" alt="Alvaura Gemstone Rings 系列页桌面全页截图，3 列卡片"></div>
+  <p class="shotcap">系列页本身干净整齐，但 20 张卡片除了颜色以外没有任何帮人做选择的信息。</p>
+  <div class="fix"><b>改法：</b>Judge.me 后台开启 "Preview badge on collection pages"；Shopify 后台给商品打 tag（bestseller / new / ready-to-ship），Ella 主题的卡片标签读 tag 显示；商品名后加副标题或 metafield "8 mm · 2.6 ct"。</div>
+</div>
+
+<h2>三、商品详情页（以 Vivid Mint Green 星座戒为例）</h2>
+
+<div class="finding">
+  <h3><span class="sev p1">P1-4</span>决定"值不值"的规格全部折叠，首屏可见文案只有一行</h3>
+  <div class="ev"><b>实测：</b>购买区可见文字：标题、"14k Gold Vermeil & Lab-Grown Sapphire"、$259、4.8 (8 reviews)、Klarna、宝石/金属/尺码选项、加购、三个图标。641 字的描述（含 "8mm sapphire · Average 2.6 ct · 2.5μm" 等关键数字）全在默认关闭的 "Details & Dimensions" 里；"Materials & Care" 和 "Shipping, Returns & Warranty" 同样关闭。页面没有任何地方写发货时间（FAQ 说定制款 7–15 个工作日，评价里 4 条 4 星都在抱怨"比预期慢"）。</div>
+  <div class="shot"><img loading="lazy" src="assets/shots/pdp_desktop_top.jpg" alt="Alvaura 详情页首屏：左侧图片网格，右侧标题、价格、评分、Klarna、宝石与金属选项、尺码、ADD TO CART，三个折叠项"></div>
+  <p class="shotcap">详情页首屏：结构完整，但 "8 mm / 2.6 ct / 2.5 μm / 发货时间" 一个都看不到。</p>
+  <div class="impact"><b>影响：</b>没有克拉和毫米，$259 只能被拿去和 Mejuri $138 的碎石戒比（见定价页）；没有发货日期，评价里的"慢"就变成了差评。</div>
+  <div class="fix"><b>改法：</b>价格下方加一行规格 "8 mm · 2.6 ct lab-grown sapphire · 1.5 mm band · 14k vermeil 2.5 μm"；加购按钮下加 "Ships by [日期] · Duties included · 30-day returns · 2-year warranty"；Details 折叠默认展开。Ella 主题的 Product information 区块支持自定义文本和 metafield。</div>
+</div>
+
+<div class="finding">
+  <h3><span class="sev p0">P0-4</span>280 条评价全部没有"已验证购买"、没有一张买家图，文案高度模板化</h3>
+  <div class="ev"><b>实测（Judge.me 接口逐产品拉取）：</b>280 条评价分布在 21 款商品；5 星 235 / 4 星 42 / 3 星 3 / 无 1–2 星；<b>verified_buyer 全部为 false；买家上传图片 0 张</b>（仅 1 款有 1 张商家侧图）；评价者名字全部是"名 + 姓首字母"（Amelia T. / Harper S. / Mia G.…）；正文平均 83 字符；同款多条评价句式雷同（如帕帕拉恰款连续 5 条都是 "The glowing paraiba blue color feels rare and refined / looks even better in person"）；时间集中在 2025-10 至 2026-01（共 232 条，占 83%），2026-04 之后为 0；每个详情页的 "Store reviews (0)"。Alvaura 在 Trustpilot、Google 都没有评价页。</div>
+  <div class="impact"><b>影响：</b>无法断言这些评价的来源，但从消费者视角看，"0 已验证 + 0 图 + 句式雷同"是欧美买家（尤其 Reddit 用户）识别"刷评"的标准特征——Reddit 原话 "the shop has excellent reviews (which probably means nothing nowadays)"。这会让 280 条评价从加分项变成扣分项。</div>
+  <div class="fix"><b>改法：</b>① Judge.me 开启 "Review request email"（发货后 14 天自动邀评，附 10% 回购码换带图评价），让真订单评价累积起来带 Verified 标；② 现有评价若来自导入，建议保留但下调展示（不在首页/卡片用），或标明来源；③ 开 Trustpilot 免费账号并接 Judge.me 同步；④ 把 Instagram 买家秀（Tolstoy 已在收集）接到详情页评价区上方。</div>
+</div>
+
+<div class="finding">
+  <h3><span class="sev p1">P1-5</span>没有搭配销售：详情页只有"相关产品"，购物车抽屉零推荐</h3>
+  <div class="ev"><b>实测：</b>详情页底部 "RELATED PRODUCTS" 是 20 张同色系其他戒指卡；无 "Complete the stack / Style it with / Bundle"。加购后抽屉显示：商品 + "You qualify for free shipping!" + Checkout / View cart，无任何推荐（已装 AI Cart Max 与 Discos BOGO 两个应用，抽屉里没有内容出现）。</div>
+  <div class="shot"><img loading="lazy" src="assets/shots/cart_drawer_desktop.jpg" alt="Alvaura 购物车抽屉：1 件商品 $259，You qualify for free shipping，Checkout 按钮，无推荐商品"></div>
+  <p class="shotcap">购物车抽屉：宽 420 px，只有商品和结账按钮。</p>
+  <div class="fix"><b>改法：</b>见定价页四个杠杆：详情页 "Complete the stack"（主石戒 + 2 叠戴戒减 15%）、Color Stack 套装 SKU、抽屉两档进度条 + 推 $89–119 叠戴戒、礼盒选项。</div>
+</div>
+
+<div class="finding">
+  <h3><span class="sev p2">P2-1</span>"THE ALVAURA DIFFERENCE" 区块出现孤立文字 "Vivid Mint Green"</h3>
+  <div class="ev"><b>实测：</b>详情页中段的品牌区块标题下单独一行 "Vivid Mint Green"（疑似把产品颜色字段误放进了区块副标题），三张卖点卡片本身正常。</div>
+  <div class="fix"><b>改法：</b>主题编辑器里删掉该副标题或改成固定文案 "Why Alvaura"。</div>
+</div>
+
+<h2>四、购物车与结账</h2>
+
+<div class="finding">
+  <h3><span class="sev ok">通过</span>结账流程本身完整、运费与关税处理正确</h3>
+  <div class="ev"><b>实测：</b>Shopify 一页式结账，快捷支付 PayPal + Google Pay，支付方式 信用卡（Visa/MC/Amex/银联）/ PayPal / Klarna；填纽约地址后：Standard 5–10 个工作日 <b>FREE，写明 duties included（关税已含）</b>；Express 3–5 天 FedEx/DHL 原价 $19.90（本单显示 FREE）；小计 $259 = 总计 $259，无隐藏费用。折扣码输入框、"All transactions are secure and encrypted" 都有。</div>
+  <div class="impact">这是 Alvaura 比 AroundFire 等此前诊断过的站强的地方：没有"填完地址才跳出运费"的坑。要改的只是 P0-2 的折扣兑现和下面的口径统一。</div>
+</div>
+
+<div class="finding">
+  <h3><span class="sev p0">P0-5</span>政策页互相矛盾：两份运费政策打架，退货政策还是 Shopify 模板</h3>
+  <div class="ev"><b>实测三处原文：</b>① /pages/shipping-returns：标准运费 $7.90、满 $150 免；快递 $14.99、满 $300 免；"If additional charges are required… we'll contact you before shipment"。② /policies/shipping-policy（页脚和结账页链接的正式政策）："All products are shipped directly from our <b>China warehouse</b>… custom duties and taxes… liable by the customer"，还提到 "Great Singapore Sale, Singles Day"。③ 结账页：Standard FREE、"duties included"、Express $19.90。三个数字（$7.90 / $14.99 / $19.90）和两种关税口径（客户自理 vs 已含）同时存在。<br>退货政策 /policies/refund-policy 原文含 "perishable goods (such as food, flowers, or plants)… hazardous materials, flammable liquids"——是 Shopify 默认模板未改；并写明 "we cannot accept returns on sale items"。保修页联系邮箱 care@alvaura.com，其他页 hello@alvaura.com；联系页说 20–36 小时回复，FAQ 说 24–48 小时。</div>
+  <div class="impact"><b>影响：</b>欧美买家下单前会点开 Shipping / Returns 看一眼；看到"中国仓直发、关税自理"会直接放弃（Missoma 差评里"卡关 13 天、品牌不吭声"就是这个恐惧），看到"鲜花植物不能退"会觉得这店不认真。</div>
+  <div class="fix"><b>改法：</b>后台 Settings → Policies 重写 Shipping policy 和 Refund policy（以 shipping-returns 页 + 结账实际为准：Standard $7.90/满 $150 免/5–10 天/关税已含；Express $19.90/满 $300 免/3–5 天；30 天退换，Final Sale 商品在商品页明确标注）；统一邮箱和回复时效；删掉新加坡大促、中国仓字样（发货地可以写 "Ships from our Asia workshop, duties prepaid"）。</div>
+</div>
+
+<h2>五、移动端</h2>
+
+<div class="finding">
+  <h3><span class="sev p1">P1-6</span>手机端没有固定加购条，底部被 5 格站内导航占住</h3>
+  <div class="ev"><b>实测（390×844）：</b>详情页 ADD TO CART 按钮位于页面 1,100 px 处（第二屏以下），滚动后没有任何固定的加购条；屏幕底部固定的是主题自带的 "Home / Search / Account / Cart / Wishlist" 5 格工具栏（高 51 px）。竞品六家里五家手机端有固定加购。</div>
+  <div class="two">
+    <div><div class="phone"><img loading="lazy" src="assets/shots/pdp_mobile_top.jpg" alt="Alvaura 手机端详情页首屏：图片、标题、价格、Klarna、颜色选项；右下 Shop with AI 黑色悬浮球压在标题区；底部 5 格工具栏"></div><p class="shotcap">手机详情页首屏：黑色 "Shop with AI" 悬浮球压在标题右侧，底部是站内导航不是加购。</p></div>
+    <div><div class="phone"><img loading="lazy" src="assets/shots/pdp_mobile_scrolled.jpg" alt="Alvaura 手机端详情页滚动后：无固定加购条"></div><p class="shotcap">滚动后：加购按钮已滑出屏幕，没有替代入口。</p></div>
+  </div>
+  <div class="fix"><b>改法：</b>Ella 主题 Theme settings → Product → 开启 "Sticky add to cart (mobile)"；把 5 格工具栏关掉或只在首页/系列页显示。</div>
+</div>
+
+<div class="finding">
+  <h3><span class="sev p1">P1-7</span>两个第三方悬浮组件压在内容上</h3>
+  <div class="ev"><b>实测：</b>Tolstoy 的 "Pick up where you left off / Shop Best Sellers" 气泡在首页类目图块上弹出，盖住 "GEMSTONE RINGS" 图块文字；"Shop with AI" 黑色悬浮球在详情页压在标题右侧、在首页压在首屏按钮旁；桌面端右侧还有历史/分享两个悬浮按钮。桌面端复访与首访都出现（稳定复现，非 cookie 门控）。</div>
+  <div class="phone"><img loading="lazy" src="assets/shots/home_mobile_full.jpg" alt="Alvaura 手机端首页全页：Tolstoy 气泡 Pick up where you left off 盖住类目图块"></div>
+  <p class="shotcap">手机首页全页：第二屏类目图块被 Tolstoy 气泡和底部工具栏同时遮挡。</p>
+  <div class="fix"><b>改法：</b>Tolstoy 后台关闭 "return visitor bubble" 或延迟 15 秒；"Shop with AI" 改为页脚文字入口或缩成小图标放右下角避开标题区；桌面端历史/分享悬浮按钮关闭。</div>
+</div>
+
+<div class="finding">
+  <h3><span class="sev ok">通过</span>手机端无全屏弹窗、菜单可用、尺码按钮 40×40 px 可点</h3>
+  <div class="ev"><b>实测：</b>首访/复访均无全屏弹窗（fullscreenModalCount=0）；汉堡菜单正常展开；尺码 12 个按钮 40×40 px，符合点击标准；系列页 2 列卡片 170 px 宽、标题 16 px 两行不截断。</div>
+</div>
+
+<h2>六、信任与内容体系</h2>
+
+<div class="finding">
+  <h3><span class="sev p1">P1-8</span>教育内容写得不错，但全是纯文字、不在购买路径上</h3>
+  <div class="ev"><b>实测：</b>About（3,801 字符）、Our Materials（6,289 字符，含 "2.5 microns… flash plating can be as thin as 0.02 microns"、"2-hour silica protection process"、"tested to resist saltwater corrosion"）、Lab-Grown Gemstones（4,605 字符）、FAQ（3,318 字符）——四个页面<b>图片数量全部为 0</b>，只能从页脚进入。这些恰恰是消费者最想要的"证据"（见市场洞察：83% 愿意考虑但 37% 信息不够）。</div>
+  <div class="fix"><b>改法：</b>把 Our Materials 里的四个数字（2.5 μm / 0.02 μm / 2 小时防护 / 盐水测试）做成详情页的一张信息图；Lab-Grown 页做成 "Lab-grown vs Mined vs Moissanite vs CZ" 四栏对比表放进详情页折叠区；About 页加创始团队/工坊照片。</div>
+</div>
+
+<div class="finding">
+  <h3><span class="sev p2">P2-2</span>社媒体量小，且简介把消费者不在意的"环保"放第一句</h3>
+  <div class="ev"><b>实测：</b>Instagram @alvaurajewelry 3,160 粉丝 / 232 帖；TikTok @alvaurajewelry 68 粉丝 / 104 视频 / 2,120 赞；YouTube、Pinterest、Facebook 页面存在。IG 简介 "Effortless Luxury with a Glow · Lab-Grown Ethical Gems, No Mining, No Markups · Affordable. Authentic."。</div>
+  <div class="fix"><b>改法：</b>简介改为颜色与尺寸卖点（见 USP 页）；TikTok 104 条视频只有 68 粉，说明内容形式需要换——参考 Reddit 里最受欢迎的形式是"手上实拍 + 不同光线下的颜色变化"。</div>
+</div>
+
+<div class="finding">
+  <h3><span class="sev p2">P2-3</span>SEO 基础薄：博客 2 篇、描述短、alt 缺</h3>
+  <div class="ev"><b>实测：</b>博客共 2 篇（"which gemstone colors best complement different skin tones"、"top 5 most popular gemstones for engagement rings in 2025"）；54 款商品描述中位数 388 字符，40 款莫桑石款只有 "Metal / Band Width / Gemstone" 三行（65–81 字符）；首页无 H1。</div>
+  <div class="fix"><b>改法：</b>每个颜色系写一篇 "What is a [teal/mint] sapphire" 指南并链到集合；莫桑石款补 80–120 字描述 + 克拉；商品图 alt 用"颜色 + 款式 + 材质"。</div>
+</div>
+
+<div class="finding">
+  <h3><span class="sev p2">P2-4</span>商品命名过长，卡片和购物车里读起来累</h3>
+  <div class="ev"><b>实测：</b>如 "Vivid Mint Green Constellation Cluster Ring - Round Brilliant"（61 字符）、"Rubellite Pink Princess-cut Sapphire Unfolding Wings Cluster Ring"。手机卡片标题占两行 34 px（未截断，不算缺陷），但购物车、邮件、广告里会被截断。</div>
+  <div class="fix"><b>改法：</b>主名保留 "颜色 + 款式"（"Vivid Mint Constellation Ring"），切工和形状放副标题/规格行。</div>
+</div>
+
+<h2>七、诚实修正：复核后撤回的三条</h2>
+<table>
+  <thead><tr><th>初判</th><th>复核结果</th><th>结论</th></tr></thead>
+  <tbody>
+    <tr><td>首页 4 个类目图块"图片缺失、白字白底看不清"（脚本首次读取 naturalWidth=0、对比度 1.04）</td><td>用鼠标滚轮真实滚动后 4 张图全部加载（1440 px 宽），白字压在图上清晰可读；原因是主题的"滚动时揭示"动画在脚本滚动下没触发</td><td><b>撤回，不是缺陷</b></td></tr>
+    <tr><td>详情页 "REAL-LIFE DAILY WEAR" 买家秀区块空白</td><td>真实滚动后区块内 2 段视频 + 2 张图（3,500 px 宽）正常加载，是 Tolstoy 组件懒加载</td><td><b>撤回，不是缺陷</b></td></tr>
+    <tr><td>未检测到 Meta 像素（源码里没有 fbevents.js）</td><td>Shopify Web Pixels 配置里存在 facebook_pixel，像素经新版加载方式安装</td><td><b>撤回，像素在</b></td></tr>
+    <tr><td>首页 48 张图"损坏"</td><td>全部是懒加载，逐一请求返回 200</td><td><b>撤回</b></td></tr>
+  </tbody>
+</table>
+
+<h2>八、问题总表</h2>
+<table>
+  <thead><tr><th>级别</th><th>问题</th><th>页面</th><th>复现</th><th>改动难度</th></tr></thead>
+  <tbody>
+    <tr><td><span class="sev p0">P0</span></td><td>首屏推即将上市款，按钮无链接</td><td>首页</td><td>稳定</td><td>低（主题编辑器）</td></tr>
+    <tr><td><span class="sev p0">P0</span></td><td>首单 15% 无领取方式，结账无折扣</td><td>全站 / 结账</td><td>稳定</td><td>低（装邮件应用 + 建折扣码）</td></tr>
+    <tr><td><span class="sev p0">P0</span></td><td>导航 7 个入口是空集合，另有测试集合与"副本"页</td><td>导航 / 集合</td><td>稳定</td><td>低（后台归类）</td></tr>
+    <tr><td><span class="sev p0">P0</span></td><td>280 条评价 0 已验证 0 图、句式雷同</td><td>详情页</td><td>稳定</td><td>中（流程 + 时间）</td></tr>
+    <tr><td><span class="sev p0">P0</span></td><td>运费政策矛盾、退货政策为模板、邮箱与时效不一致</td><td>政策页</td><td>稳定</td><td>低（改文案）</td></tr>
+    <tr><td><span class="sev p1">P1</span></td><td>首页无 H1、alt 缺失、标题关键词顺序</td><td>首页</td><td>稳定</td><td>低</td></tr>
+    <tr><td><span class="sev p1">P1</span></td><td>信任信息在页面最底部</td><td>首页</td><td>稳定</td><td>低</td></tr>
+    <tr><td><span class="sev p1">P1</span></td><td>卡片无评分/标签/尺寸</td><td>系列页</td><td>稳定</td><td>低–中</td></tr>
+    <tr><td><span class="sev p1">P1</span></td><td>规格与发货时间折叠不可见</td><td>详情页</td><td>稳定</td><td>低</td></tr>
+    <tr><td><span class="sev p1">P1</span></td><td>无搭配销售、抽屉无推荐</td><td>详情页 / 购物车</td><td>稳定</td><td>中</td></tr>
+    <tr><td><span class="sev p1">P1</span></td><td>手机无固定加购条</td><td>详情页（手机）</td><td>稳定</td><td>低（主题设置）</td></tr>
+    <tr><td><span class="sev p1">P1</span></td><td>悬浮组件压内容</td><td>首页 / 详情页</td><td>稳定</td><td>低（应用设置）</td></tr>
+    <tr><td><span class="sev p1">P1</span></td><td>教育内容纯文字且不在购买路径</td><td>About / Materials / FAQ</td><td>稳定</td><td>中</td></tr>
+    <tr><td><span class="sev p2">P2</span></td><td>品牌区块孤立文字 / 社媒简介 / SEO / 命名过长</td><td>多处</td><td>稳定</td><td>低</td></tr>
+  </tbody>
+</table>
+
+<div class="pagenav"><a href="competitors.html">← 竞品拆解</a><a href="pricing.html">下一份：定价搭配 →</a></div>
+</div>
+<div class="foot">Alvaura 市场调研与网站优化报告 · 2026-09-15 · 实测数据当日有效</div>
+<script src="assets/site.js"></script>
+</body>
+</html>

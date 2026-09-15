@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>实操落地指南 · Alvaura</title>
+<link rel="stylesheet" href="assets/site.css">
+<link rel="stylesheet" href="assets/alvaura.css">
+</head>
+<body>
+<div class="topbar"><div class="topbar-in">
+  <a class="home" href="index.html">ALVAURA 报告</a><span class="sep">|</span>
+  <a href="summary.html">执行摘要</a><a href="market.html">市场洞察</a><a href="competitors.html">竞品拆解</a><a href="site-audit.html">网站诊断</a><a href="pricing.html">定价搭配</a><a href="usp.html">USP</a><a href="action-plan.html">落地指南</a>
+</div></div>
+
+<div class="hero">
+  <div class="hero-in">
+    <div class="eyebrow">Implementation Playbook · 实操落地指南</div>
+    <h1>照着做：每一条写清在哪改、改成什么、怎么验证</h1>
+    <p class="sub">站点是 Shopify + Ella 主题 7.1.0 + Judge.me。下面的动作 90% 在 Shopify 后台和主题编辑器里完成，不需要写代码。英文文案可直接复制。</p>
+  </div>
+</div>
+
+<div class="wrap">
+
+<details class="termbox">
+  <summary>术语速查</summary>
+  <div class="tb-in"><dl>
+    <dt>主题编辑器</dt><dd>Shopify 后台 Online Store → Themes → Customize，拖拽区块改首页/详情页的地方。</dd>
+    <dt>Metafield</dt><dd>Shopify 给商品加自定义字段（如"克拉数"），主题可以读出来显示。</dd>
+    <dt>Tag</dt><dd>商品标签，用来自动归集合和显示卡片角标。</dd>
+    <dt>Shopify Bundles</dt><dd>Shopify 官方免费套装应用。</dd>
+    <dt>Klaviyo / Shopify Email</dt><dd>邮件营销工具，都有免费档；弹窗收邮箱 + 自动发欢迎码。</dd>
+    <dt>Judge.me</dt><dd>Alvaura 已装的评价插件，支持自动邀评邮件和带图评价奖励。</dd>
+  </dl></div>
+</details>
+
+<h2>第一档 · P0（两周内，不用开发）</h2>
+
+<div class="finding">
+  <h3>1. 首屏换成主力款 + 明确按钮</h3>
+  <div class="step"><div class="no">1</div><div class="bd">后台 Online Store → Themes → Customize → 首页 → <b>Slideshow</b> 区块，把 GEM STACKER 幻灯片替换为主力款手部实拍（建议用 Tidal Lagoon 五石戒或 Misty Cornflower 五石戒，评价最多）。</div></div>
+  <div class="step"><div class="no">2</div><div class="bd">文案：Eyebrow <b>Real lab-grown sapphires · 2–4 ct</b>；Heading <b>Color, at full size.</b>；Sub <b>Big, vivid gemstones in 2.5-micron 14k gold vermeil — the size mined stones can't give you under $400.</b>；Button <b>Shop Gemstone Rings</b> → /collections/gemstone-ring。</div></div>
+  <div class="step"><div class="no">3</div><div class="bd">GEM STACKER 移到第二个幻灯片或首页第三区块，按钮改 <b>Notify me</b>（链接到邮件弹窗）。</div></div>
+  <div class="step"><div class="no">✓</div><div class="bd"><b>验证：</b>手机打开首页，第一屏能看到一个可点击的 Shop 按钮，点进去是有商品的页面。</div></div>
+</div>
+
+<div class="finding">
+  <h3>2. 首单 15% 闭环</h3>
+  <div class="step"><div class="no">1</div><div class="bd">Shopify 后台 Discounts → Create discount → Amount off order → 15% → Code <b>WELCOME15</b> → 勾选 "Limit to one use per customer"，不设结束日期。</div></div>
+  <div class="step"><div class="no">2</div><div class="bd">装 Shopify Email（免费）或 Klaviyo：建 Sign-up form 弹窗，触发"首次访问 8 秒后或滚动 40%"，标题 <b>Get 15% off your first order</b>，副标 <b>Plus early access to new colors.</b>；提交后自动发邮件含 WELCOME15。</div></div>
+  <div class="step"><div class="no">3</div><div class="bd">公告栏改 <b>Get 15% off your first order — join the list</b>，点击滚到弹窗/页脚表单。</div></div>
+  <div class="step"><div class="no">✓</div><div class="bd"><b>验证：</b>无痕窗口访问 → 弹窗出现 → 填邮箱收到码 → 结账输入码总价减 15%。</div></div>
+</div>
+
+<div class="finding">
+  <h3>3. 清理空集合与导航</h3>
+  <div class="step"><div class="no">1</div><div class="bd">Products → Collections：给 Paraiba Blue / Padparadscha Peachy Pink / Cornflower Blue / Morgan Pink 四个集合改成<b>自动集合</b>，条件 "Product tag equals color:paraiba" 等；再给对应商品打 tag（在售的有 Paraiba 2 款、Padparadscha 1 款、Cornflower 2 款、Morganite 2 款）。</div></div>
+  <div class="step"><div class="no">2</div><div class="bd">删除 <b>best b、Gem - $269、Gem - $289、Gem - $389</b>；Online Store → Pages 删除 <b>size-guide的副本</b>。</div></div>
+  <div class="step"><div class="no">3</div><div class="bd">NEW 集合改自动条件 "Created date is after [90 天前]"（或手动放最近 6 款）。Asscher / Marquise / Ruby / Hidden Diamonds / Gift Picks / New Gemstones 暂无商品的，Navigation 里先移除菜单项。</div></div>
+  <div class="step"><div class="no">✓</div><div class="bd"><b>验证：</b>逐个点导航所有二级项，没有一个显示 "No products found"。</div></div>
+</div>
+
+<div class="finding">
+  <h3>4. 重写三份政策 + 统一口径</h3>
+  <div class="step"><div class="no">1</div><div class="bd">Settings → Policies → <b>Shipping policy</b> 全文替换（以下英文可直接用）：<br><span class="zhu">Standard shipping: $7.90, free on orders over $150 — tracked economy, 5–10 business days after dispatch, <b>duties and taxes included</b>. Express: $19.90, free on orders over $300 — FedEx/DHL, 3–5 business days, duties prepaid. Ready-to-ship pieces dispatch in 1–3 business days; made-to-order pieces in 7–15 business days (each product page shows its "Ships by" date). We ship from our workshop in Asia; you will never be asked to pay customs on delivery.</span></div></div>
+  <div class="step"><div class="no">2</div><div class="bd"><b>Refund policy</b> 删掉模板段落（perishable goods / flowers / hazardous 等），写清：30-day returns for unworn items in original packaging; free return label for US; exchanges welcome; <b>Final Sale items are marked on the product page</b>（若决定促销品可退，则删此句）。</div></div>
+  <div class="step"><div class="no">3</div><div class="bd">全站邮箱统一 <b>hello@alvaura.com</b>；回复时效统一 <b>within 24 hours (Mon–Sat)</b>；把 /pages/shipping-returns 与 FAQ 的运费数字改成和政策一致（$7.90 / $19.90）。</div></div>
+  <div class="step"><div class="no">✓</div><div class="bd"><b>验证：</b>页脚 Shipping policy、Refund policy、FAQ、Shipping & Returns 四个页面的运费、关税、退货天数、邮箱完全一致；结账页运费与之相符。</div></div>
+</div>
+
+<div class="finding">
+  <h3>5. 启动真实评价体系</h3>
+  <div class="step"><div class="no">1</div><div class="bd">Judge.me → Settings → <b>Review Requests</b>：开启自动邀评，发货后 14 天发送（定制款 21 天），主题 "How's your [color] looking on you?"；开启 <b>Photo/Video reviews</b> 与 <b>Coupon for reviews</b>：带图评价送 10% 回购码。</div></div>
+  <div class="step"><div class="no">2</div><div class="bd">对现有 280 条：确认来源。若为导入，Judge.me 里可保留但关闭 "Store reviews" 标签，并在首页/卡片不引用其总数；真订单评价累积到 30+ 条后再开卡片徽章。</div></div>
+  <div class="step"><div class="no">3</div><div class="bd">注册 Trustpilot 免费商家账号，Judge.me 有 Trustpilot 同步；页脚加 Trustpilot 徽章。</div></div>
+  <div class="step"><div class="no">✓</div><div class="bd"><b>验证：</b>30 天后详情页出现带 "Verified" 标记的评价，且至少 20% 带图。</div></div>
+</div>
+
+<div class="finding">
+  <h3>6. 详情页规格行 + 发货日期行</h3>
+  <div class="step"><div class="no">1</div><div class="bd">Settings → Custom data → Products 建两个 metafield：<b>stone_spec</b>（单行文本，如 "8 mm · 2.6 ct lab-grown sapphire · 1.5 mm band"）、<b>lead_time</b>（"Ready to ship" 或 "Made to order · 7–15 days"）。批量用 CSV 导入 54 款。</div></div>
+  <div class="step"><div class="no">2</div><div class="bd">主题编辑器 → Product → Product information 区块：在 Price 下方加 Text 区块绑定 stone_spec；在 Buy buttons 下方加 Text 区块："<b>Ships by {日期} · Duties included · 30-day returns · 2-year warranty</b>"（Ella 支持动态源，日期用 lead_time 文案替代也可）。</div></div>
+  <div class="step"><div class="no">3</div><div class="bd">Details & Dimensions 折叠改为默认展开；"THE ALVAURA DIFFERENCE" 区块删除孤立的颜色副标题。</div></div>
+  <div class="step"><div class="no">✓</div><div class="bd"><b>验证：</b>手机打开任一彩宝戒，不滚动就能看到毫米、克拉、发货时间三个信息。</div></div>
+</div>
+
+<h2>Before / After：详情页购买区（英文示意）</h2>
+<div class="two">
+  <div class="mock before"><div class="mk-lbl">Before · 现状</div><div class="mk-body">
+    <h4>Vivid Mint Green Constellation Cluster Ring - Round Brilliant</h4>
+    <p class="sub">14k Gold Vermeil &amp; Lab-Grown Sapphire</p>
+    <div class="price">$259.00 <span style="font-size:12px;color:#1F6F78">★ 4.8 (8 reviews)</span></div>
+    <p class="note">Pay in 4 interest-free payments of $64.75 with Klarna.</p>
+    <p class="note">Gemstone: Mint Green &nbsp; Metal: 14k Gold Vermeil &nbsp; Size: 4 … 9.5</p>
+    <span class="btn">ADD TO CART</span>
+    <p class="note">FREE SHIPPING · EASY RETURNS · 2-YEAR WARRANTY</p>
+    <p class="note">▸ Details &amp; Dimensions &nbsp; ▸ Materials &amp; Care &nbsp; ▸ Shipping, Returns &amp; Warranty</p>
+    <p class="bad">看不到：8 mm / 2.6 ct / 2.5 μm / 发货时间 / 关税 / 为什么是真宝石</p>
+  </div></div>
+  <div class="mock after"><div class="mk-lbl">After · 建议</div><div class="mk-body">
+    <h4>Vivid Mint Constellation Ring</h4>
+    <p class="sub">Lab-grown sapphire · 14k gold vermeil · Round brilliant</p>
+    <div class="price">$259 <span style="font-size:12px;color:#1F6F78">★ 4.8 · 8 verified reviews</span></div>
+    <div class="spec"><span>8 mm center</span><span>2.6 ct</span><span>2.5 μm 14k vermeil</span><span>1.5 mm band</span></div>
+    <p class="note">Or 4 × $64.75 with Klarna</p>
+    <p class="note">Color: <b>Mint</b> · Metal: <b>14k Vermeil</b> (Most popular) · Size: 6 &nbsp;<u>Size guide</u></p>
+    <span class="btn">ADD TO CART — $259</span>
+    <p class="ship">Ships by Sep 25 · Duties included · 30-day returns · 2-year warranty</p>
+    <div class="bundle"><b>Complete the stack</b> — add Whisper Thin + Glimmer rings <span class="kill">$497</span> <b>$422</b> · save 15% <span class="btn ghost" style="display:inline-block;padding:5px 10px;margin:0 0 0 6px;font-size:11px">Add set</span></div>
+    <p class="note"><b>Why it's real:</b> A lab-grown sapphire is a real sapphire — same crystal, same 9/10 hardness, same color. Grown, not mined. Not glass, not CZ, not coated. Shown in daylight; indoor light reads slightly deeper.</p>
+  </div></div>
+</div>
+
+<h2>Before / After：首页首屏（英文示意）</h2>
+<div class="two">
+  <div class="mock before"><div class="mk-lbl">Before · 现状</div>
+    <div class="hero-mock" style="background:linear-gradient(135deg,#c9b8a8,#8f7a6b)"><div class="hm-in"><p>NEW IN</p><h4>GEM STACKER</h4><span class="btn" style="background:#ddd;color:#777">COMING SOON（无链接）</span></div></div>
+    <div class="mk-body"><p class="bad">整个首屏没有可购买的东西；信任信息在 4,300 px 之下</p></div>
+  </div>
+  <div class="mock after"><div class="mk-lbl">After · 建议</div>
+    <div class="hero-mock"><div class="hm-in"><p>REAL LAB-GROWN SAPPHIRES · 2–4 CT</p><h4>Color, at full size.</h4><p>Big, vivid gemstones in 2.5-micron 14k gold vermeil — the size mined stones can't give you under $400.</p><span class="btn">Shop Gemstone Rings</span></div></div>
+    <div class="mk-body"><div class="row"><span>✔ Duties included</span><span>✔ 2.5 μm vermeil</span><span>✔ 2-year warranty</span><span>✔ 30-day returns</span></div></div>
+  </div>
+</div>
+
+<h2>第二档 · P1（1–2 个月）</h2>
+
+<div class="finding">
+  <h3>7. Complete the stack 套装 + Color Stack SKU</h3>
+  <div class="step"><div class="no">1</div><div class="bd">装 <b>Shopify Bundles</b>（免费）：为每款彩宝主石戒建 1 个 "Complete the stack" 套装（主石戒 + 2 款叠戴戒，整体减 15%），套装商品挂在主石戒详情页加购按钮下方。</div></div>
+  <div class="step"><div class="no">2</div><div class="bd">另建 5 个独立套装商品 "The Mint Stack / The Lagoon Stack / The Paraiba Stack / The Padparadscha Stack / The Cornflower Stack"，各自拍一张三戒叠戴实拍，放进 Best Sellers 集合和首页 "The Art of Stacking" 区块。</div></div>
+  <div class="step"><div class="no">✓</div><div class="bd"><b>验证：</b>30 天后看 Shopify Analytics "Average order value"，目标从单件均价 ~$250 提到 $300+。</div></div>
+</div>
+
+<div class="finding">
+  <h3>8. 购物车抽屉推动</h3>
+  <div class="step"><div class="no">1</div><div class="bd">Ella 主题 Cart drawer 设置：进度条改两档 "Free standard shipping at $150 ✓ → Free express at $300"；开启 "Cart recommendations"，推荐来源设为 "叠戴戒集合"（$89–119）。</div></div>
+  <div class="step"><div class="no">2</div><div class="bd">已装的 AI Cart Max / Discos BOGO 实测没有出现内容——二选一保留并配置，或卸载以减轻页面加载。</div></div>
+  <div class="step"><div class="no">3</div><div class="bd">加 <b>Gift box $15</b> 商品作为抽屉里的一键加购（现在的免费小盒评价里已被夸，付费升级版可做礼盒 + 卡片）。</div></div>
+</div>
+
+<div class="finding">
+  <h3>9. 卡片评分与标签</h3>
+  <div class="step"><div class="no">1</div><div class="bd">Judge.me → Widgets → <b>Preview Badge</b> → 开启 "Show on collection pages"（真评价累积到 30+ 后再开）。</div></div>
+  <div class="step"><div class="no">2</div><div class="bd">商品打 tag：<b>bestseller</b>（按销量前 8）、<b>new</b>（90 天内）、<b>ready-to-ship</b>；Ella 主题 Product card → Badges 读 tag 显示角标。</div></div>
+  <div class="step"><div class="no">3</div><div class="bd">卡片副标题显示 stone_spec 的前半段（"8 mm · 2.6 ct"）。</div></div>
+</div>
+
+<div class="finding">
+  <h3>10. 手机固定加购 + 关悬浮组件</h3>
+  <div class="step"><div class="no">1</div><div class="bd">Ella 主题 Theme settings → Product page → 开启 <b>Sticky add to cart</b>（mobile）。</div></div>
+  <div class="step"><div class="no">2</div><div class="bd">Theme settings → Mobile toolbar：关闭或只在首页显示（详情页底部让位给加购条）。</div></div>
+  <div class="step"><div class="no">3</div><div class="bd">Tolstoy 后台：关闭 "return visitor bubble"；"Shop with AI" 入口改为页脚链接 + 详情页折叠区一行，撤掉悬浮球；主题里关闭右侧 "recently viewed / share" 悬浮按钮。</div></div>
+  <div class="step"><div class="no">✓</div><div class="bd"><b>验证：</b>手机打开详情页滚到底，屏幕底部始终有 ADD TO CART；首页类目图块文字不被任何气泡遮挡。</div></div>
+</div>
+
+<div class="finding">
+  <h3>11. "Why it's real" 对比表 + 镀层信息图</h3>
+  <div class="step"><div class="no">1</div><div class="bd">做一张四栏表放进详情页折叠区（默认展开）：<br>
+  <table style="font-size:12.5px"><thead><tr><th></th><th>Lab-grown sapphire (Alvaura)</th><th>Mined sapphire</th><th>Moissanite</th><th>Cubic zirconia</th></tr></thead><tbody>
+  <tr><td>What it is</td><td>Real sapphire crystal, grown</td><td>Real sapphire, mined</td><td>Silicon carbide</td><td>Zirconium oxide</td></tr>
+  <tr><td>Hardness (Mohs)</td><td>9</td><td>9</td><td>9.25</td><td>8–8.5</td></tr>
+  <tr><td>Where the color lives</td><td>In the crystal — never fades</td><td>In the crystal</td><td>Mostly colorless</td><td>Dyed, can dull</td></tr>
+  <tr><td>2.6 ct in 14k vermeil</td><td><b>$259</b></td><td>$2,000+ (typically solid gold)</td><td>—</td><td>~$40</td></tr>
+  </tbody></table></div></div>
+  <div class="step"><div class="no">2</div><div class="bd">镀层信息图：一张截面示意（925 silver core → 2.5 μm 14k gold → silica shield），旁注 "≈100× thicker than flash plating (0.02 μm) · salt-water tested · 2-year Brilliance Warranty"。素材文字全在 Our Materials 页已有。</div></div>
+</div>
+
+<div class="finding">
+  <h3>12. 公告栏与首页信任区</h3>
+  <div class="step"><div class="no">1</div><div class="bd">公告栏 4 条轮播：Get 15% off your first order — join the list / Duties & taxes included · Free shipping over $150 / 2.5-micron 14k gold vermeil · 2-year Brilliance Warranty / Real lab-grown sapphires & spinels · 2–4 ct center stones。</div></div>
+  <div class="step"><div class="no">2</div><div class="bd">把 "Free shipping / 30-Days Returns / 2-Year Warranty / Klarna" 图标区从倒数第二上移到 Most Loved 下方；三卖点区标题加数字。</div></div>
+  <div class="step"><div class="no">3</div><div class="bd">首页加文字 H1（Slideshow 标题设为 H1）；页面标题改 "Sapphire & Gemstone Rings, Lab-Grown | Alvaura"。</div></div>
+</div>
+
+<h2>第三档 · P2（季度）</h2>
+<div class="kanban">
+  <div class="col"><h3>内容与 SEO</h3>
+    <div class="it">每个颜色系一篇 "What is a [teal] sapphire? Color guide" 博客，链到对应集合</div>
+    <div class="it">54 款商品图 alt 统一 "[Color] lab-grown sapphire [style] ring in 14k gold vermeil"</div>
+    <div class="it">40 款莫桑石款补 80–120 字描述 + 克拉</div>
+    <div class="it">商品名缩短：主名 "颜色 + 款式"，切工进副标题</div>
+  </div>
+  <div class="col"><h3>产品线</h3>
+    <div class="it">补 $149–229 中间层：1–1.5 克拉单石（5–6 mm）</div>
+    <div class="it">生日石映射：9 个颜色对应月份，"Gift by birth month" 入口</div>
+    <div class="it">同色系耳饰/项链（Mejuri 培育宝石集合 73 款里耳饰占多数）</div>
+  </div>
+  <div class="col"><h3>社媒与广告</h3>
+    <div class="it">IG 简介改颜色/尺寸卖点；TikTok 内容改"手上实拍 + 日光/室内光对比"</div>
+    <div class="it">广告 Hook 用价格锚："A 3 mm natural sapphire is $900. This 8 mm one is $259."</div>
+    <div class="it">落地页用 Color Stack 套装页，不用首页</div>
+  </div>
+</div>
+
+<h2>验收清单（改完对照打勾）</h2>
+<table>
+  <thead><tr><th>#</th><th>检查项</th><th>怎么查</th></tr></thead>
+  <tbody>
+    <tr><td>1</td><td>首屏有可购买主推款 + 可点按钮</td><td>手机无痕打开首页</td></tr>
+    <tr><td>2</td><td>首单 15% 能领到且结账生效</td><td>无痕 → 弹窗 → 收码 → 结账减 15%</td></tr>
+    <tr><td>3</td><td>导航无空页</td><td>逐个点二级菜单</td></tr>
+    <tr><td>4</td><td>四个政策/说明页运费、关税、退货、邮箱一致</td><td>并排打开对照</td></tr>
+    <tr><td>5</td><td>详情页首屏见 mm / ct / 发货日期 / 关税已含</td><td>手机打开任一彩宝戒</td></tr>
+    <tr><td>6</td><td>手机滚动到底仍有加购条</td><td>手机详情页滚到底</td></tr>
+    <tr><td>7</td><td>类目图块和标题不被悬浮组件遮挡</td><td>手机首页、详情页</td></tr>
+    <tr><td>8</td><td>购物车抽屉出现推荐与两档进度</td><td>加购一件 $259 商品</td></tr>
+    <tr><td>9</td><td>详情页出现 Complete the stack 套装</td><td>任一彩宝戒</td></tr>
+    <tr><td>10</td><td>30 天内出现带 Verified 与图片的新评价</td><td>Judge.me 后台</td></tr>
+  </tbody>
+</table>
+
+<div class="pagenav"><a href="usp.html">← USP 与定位</a><a href="index.html">回报告中心 →</a></div>
+</div>
+<div class="foot">Alvaura 市场调研与网站优化报告 · 2026-09-15</div>
+<script src="assets/site.js"></script>
+</body>
+</html>
