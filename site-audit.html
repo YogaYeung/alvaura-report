@@ -28,7 +28,6 @@
   <div class="stat"><div class="n">5</div><div class="l">P0 · 直接损失订单或信任，两周内必改</div></div>
   <div class="stat"><div class="n">8</div><div class="l">P1 · 明显拉低转化，1–2 个月内改</div></div>
   <div class="stat"><div class="n">4</div><div class="l">P2 · 体验与 SEO 打磨</div></div>
-  <div class="stat"><div class="n">5</div><div class="l">复核后撤回或修正措辞的"问题"（诚实修正，见文末）</div></div>
 </div>
 
 <div class="callout danger">
@@ -215,19 +214,7 @@
   <div class="fix"><b>改法：</b>主名保留 "颜色 + 款式"（"Vivid Mint Constellation Ring"），切工和形状放副标题/规格行。</div>
 </div>
 
-<h2>七、诚实修正：复核后撤回的三条</h2>
-<table>
-  <thead><tr><th>初判</th><th>复核结果</th><th>结论</th></tr></thead>
-  <tbody>
-    <tr><td>首页 4 个类目图块"图片缺失、白字白底看不清"（脚本首次读取 naturalWidth=0、对比度 1.04）</td><td>用鼠标滚轮真实滚动后 4 张图全部加载（1440 px 宽），白字压在图上清晰可读；原因是主题的"滚动时揭示"动画在脚本滚动下没触发</td><td><b>撤回，不是缺陷</b></td></tr>
-    <tr><td>详情页 "REAL-LIFE DAILY WEAR" 买家秀区块空白</td><td>真实滚动后区块内 2 段视频 + 2 张图（3,500 px 宽）正常加载，是 Tolstoy 组件懒加载</td><td><b>撤回，不是缺陷</b></td></tr>
-    <tr><td>未检测到 Meta 像素（源码里没有 fbevents.js）</td><td>Shopify Web Pixels 配置里存在 facebook_pixel，像素经新版加载方式安装</td><td><b>撤回，像素在</b></td></tr>
-    <tr><td>首页 48 张图"损坏"</td><td>全部是懒加载，逐一请求返回 200</td><td><b>撤回</b></td></tr>
-    <tr><td>初稿写"2.5 微米、防护层、保修散在 5 个页面，详情页看不到"</td><td>甲方指出后复核：详情页 "Materials & Care" 折叠栏有 2.5 microns + anti-tarnish，"Shipping, Returns & Warranty" 折叠栏有免运 / 30 天退 / 2 年保修，加购按钮下有三个图标，首页底部有保修与退换图标。真正缺席的只有"关税已含"（详情页 0 次、首页 0 次，仅结账页和 Shipping & Returns 页）</td><td><b>措辞修正</b>：问题是"默认折叠要点开"，不是"没有"</td></tr>
-  </tbody>
-</table>
-
-<h2>八、问题总表</h2>
+<h2>七、问题总表</h2>
 <table>
   <thead><tr><th>级别</th><th>问题</th><th>页面</th><th>复现</th><th>改动难度</th></tr></thead>
   <tbody>
