@@ -67,6 +67,8 @@
   <div class="ev"><b>实测：</b>公告栏写 "Enjoy 15% OFF your first order + FREE Standard Shipping"。全站源码无弹窗应用、无邮件营销系统（Klaviyo / Shopify Email 均未检测到）、无折扣码文案；后台存在一个叫 "15 % OFF First Order" 的集合（67 个商品），但集合页无任何说明。以游客身份把 $259 的戒指加入购物车进入结账：小计 $259.00、折扣 0、总计 $259.00。</div>
   <div class="shot tall short"><img loading="lazy" src="assets/shots/checkout_shipping_us_desktop.jpg" alt="Alvaura 结账页：填入纽约地址后，Standard FREE 5–10 天关税已含，Express Upgrade 原价 $19.90 显示 FREE，小计 $259 总计 $259 无折扣"></div>
   <p class="shotcap">结账页实测（纽约地址）：运费免、关税含，但公告栏承诺的 15% 不在任何地方出现。</p>
+  <div class="shot"><img loading="lazy" src="assets/shots/ev_announcement_15off.jpg" alt="Alvaura 公告栏：Enjoy 15% OFF your first order + FREE Standard Shipping"></div>
+  <p class="shotcap">公告栏原文。点击无反应，全站找不到领取入口。</p>
   <div class="impact"><b>影响：</b>承诺不兑现是信任损耗；同时这是最便宜的邮件收集机会——Missoma、Monica Vinader、Indigo Lune 都靠"首单折扣换邮箱"建立名单。</div>
   <div class="fix"><b>改法：</b>装 Shopify Email 或 Klaviyo（两者都有免费档），首访 8 秒后弹窗"Get 15% off your first order"收邮箱 → 自动发码 WELCOME15；Shopify 后台 Discounts 建 15% 折扣码限"每客户一次"。公告栏改成 "Get 15% off your first order — join the list"。</div>
 </div>
@@ -74,6 +76,8 @@
 <div class="finding">
   <h3><span class="sev p0">P0-3</span>导航里 7 个入口点进去是"No products found"</h3>
   <div class="ev"><b>实测：</b>68 个集合里 12 个商品数为 0；其中从主导航能点到的：NEW（顶部一级菜单 + 首页第 4 个类目图块）、Shop by Color 下的 Paraiba Blue / Padparadscha Peachy Pink / Cornflower Blue / Morgan Pink、Shop by Stone Shape 下的 Asscher / Marquise、NEW 下的 New Gemstones。逐个访问全部返回空页 "No products found"。另有 3 个测试集合 "Gem - $269 / $289 / $389" 和 "best b"，以及一个页面叫 "size-guide的副本"（中文"副本"二字进了 URL）。</div>
+  <div class="two"><div><div class="shot"><img loading="lazy" src="assets/shots/ev_collection_new_empty.jpg" alt="Alvaura NEW 集合页：0 products，NO PRODUCTS FOUND"></div><p class="shotcap">顶部导航 NEW → "0 products · NO PRODUCTS FOUND"。</p></div><div><div class="shot"><img loading="lazy" src="assets/shots/ev_collection_paraiba_empty.jpg" alt="Alvaura Paraiba Blue 集合页：NO PRODUCTS FOUND"></div><p class="shotcap">颜色菜单 Paraiba Blue → 同样空页。</p></div></div>
+  <div class="two"><div><div class="phone"><img loading="lazy" src="assets/shots/ev_nav_mobile_colors.jpg" alt="Alvaura 手机端菜单 RINGS → Shop by Color 列表，含 Padparadscha Peachy Pink、Paraiba Blue、Cornflower Blue 等"></div><p class="shotcap">手机菜单 RINGS → Shop by Color：9 个颜色入口里 4 个点进去是空页。</p></div><div><div class="ev"><b>逐个访问结果（2026-09-15）：</b><br>/collections/new → 0 products<br>/collections/paraiba-blue-1 → 0<br>/collections/padparadscha-peachy-pink → 0<br>/collections/cornflower-blue → 0<br>/collections/morgan-pink → 0<br>/collections/asscher → 0<br>/collections/marquise → 0<br>/collections/new-gemstones → 0<br>另：best b / Gem - $269 / Gem - $289 / Gem - $389 四个测试集合；/pages/size-guide的副本 页面存在。</div></div></div>
   <div class="impact"><b>影响：</b>用户点 NEW 看到空页会直接离开；颜色菜单是 Alvaura 最该卖的入口，一半是空的。Google 也会把这些空页当低质量页面。</div>
   <div class="fix"><b>改法：</b>后台 Products → Collections：把商品按 tag 归进对应颜色集合（Paraiba Blue 有 2 款、Padparadscha 1 款、Cornflower 2 款、Morganite 2 款都在售）；Asscher / Marquise / Ruby / Hidden Diamonds / Gift Picks 暂无商品的从导航移除；删除 best b 和 3 个 "Gem - $" 测试集合；NEW 集合改成自动规则"创建时间 ≤ 90 天"。</div>
 </div>
@@ -108,7 +112,8 @@
   <h3><span class="sev p1">P1-4</span>决定"值不值"的规格全部折叠，首屏可见文案只有一行</h3>
   <div class="ev"><b>实测：</b>购买区可见文字：标题、"14k Gold Vermeil & Lab-Grown Sapphire"、$259、4.8 (8 reviews)、Klarna、宝石/金属/尺码选项、加购、三个图标。656 字的描述（含 "8mm sapphire · Average 2.6 ct · 1.5mm band"）在默认关闭的 "Details & Dimensions" 里；"Materials & Care"（884 字，含 "at least 2.5 microns · five times thicker than average gold plating · anti-tarnish coating"）和 "Shipping, Returns & Warranty"（457 字，含免运满 $150 / 免费 30 天退 / 2 年保修）同样默认关闭。<b>信息都在，问题是要点开才看到</b>。另外，页面没有任何地方写发货时间（FAQ 说定制款 7–15 个工作日，评价里 4 条 4 星都在抱怨"比预期慢"）。</div>
   <div class="shot"><img loading="lazy" src="assets/shots/pdp_desktop_top.jpg" alt="Alvaura 详情页首屏：左侧图片网格，右侧标题、价格、评分、Klarna、宝石与金属选项、尺码、ADD TO CART，三个折叠项"></div>
-  <p class="shotcap">详情页首屏：结构完整，但 "8 mm / 2.6 ct / 2.5 μm / 发货时间" 一个都看不到。</p>
+  <p class="shotcap">详情页首屏：结构完整，但 "8 mm / 2.6 ct / 2.5 μm / 发货时间" 在不点开折叠栏的情况下一个都看不到。</p>
+  <div class="two"><div><div class="shot"><img loading="lazy" src="assets/shots/ev_pdp_buybox_collapsed.jpg" alt="Alvaura 详情页购买区默认状态：三个折叠栏收起"></div><p class="shotcap">默认状态：三个折叠栏收起，可见信息止于三个图标。</p></div><div><div class="shot"><img loading="lazy" src="assets/shots/ev_pdp_accordions_expanded.jpg" alt="Alvaura 详情页 Materials & Care 展开：at least 2.5 microns, five times thicker, anti-tarnish coating"></div><p class="shotcap">点开 "Materials & Care" 后：2.5 微米、厚五倍、防褪色涂层——内容在，只是要点开。</p></div></div>
   <div class="impact"><b>影响：</b>没有克拉和毫米，$259 只能被拿去和 Mejuri $138 的碎石戒比（见定价页）；没有发货日期，评价里的"慢"就变成了差评。</div>
   <div class="fix"><b>改法：</b>价格下方加一行规格 "8 mm · 2.6 ct lab-grown sapphire · 1.5 mm band · 14k vermeil 2.5 μm"；加购按钮下加 "Ships by [日期] · Duties included · 30-day returns · 2-year warranty"；Details 折叠默认展开。Ella 主题的 Product information 区块支持自定义文本和 metafield。</div>
 </div>
@@ -116,6 +121,10 @@
 <div class="finding">
   <h3><span class="sev p0">P0-4</span>280 条评价全部没有"已验证购买"、没有一张买家图，文案高度模板化</h3>
   <div class="ev"><b>实测（Judge.me 接口逐产品拉取）：</b>280 条评价分布在 21 款商品；5 星 235 / 4 星 42 / 3 星 3 / 无 1–2 星；<b>verified_buyer 全部为 false；买家上传图片 0 张</b>（仅 1 款有 1 张商家侧图）；评价者名字全部是"名 + 姓首字母"（Amelia T. / Harper S. / Mia G.…）；正文平均 83 字符；同款多条评价句式雷同（如帕帕拉恰款连续 5 条都是 "The glowing paraiba blue color feels rare and refined / looks even better in person"）；时间集中在 2025-10 至 2026-01（共 232 条，占 83%），2026-04 之后为 0；每个详情页的 "Store reviews (0)"。Alvaura 在 Trustpilot、Google 都没有评价页。</div>
+  <div class="shot"><img loading="lazy" src="assets/shots/ev_pdp_reviews_no_verified.jpg" alt="Alvaura 详情页评价区：Product reviews (8) Store reviews (0)，评价者 Amelia T. / Harper S.，无 Verified 徽章"></div>
+  <p class="shotcap">详情页评价区实拍：每条评价旁没有 Judge.me 的 "Verified" 徽章，"Store reviews (0)"，评价者全部是"名 + 姓首字母"格式。</p>
+  <div class="shot"><img loading="lazy" src="assets/charts/reviews_by_month.png" alt="Alvaura 280 条评价按月分布：2025-10 到 2026-01 占 83%"></div>
+  <p class="shotcap">Judge.me 接口逐产品拉取的 280 条评价按月分布：集中在 4 个月内，2026-04 之后为 0。</p>
   <div class="impact"><b>影响：</b>无法断言这些评价的来源，但从消费者视角看，"0 已验证 + 0 图 + 句式雷同"是欧美买家（尤其 Reddit 用户）识别"刷评"的标准特征——Reddit 原话 "the shop has excellent reviews (which probably means nothing nowadays)"。这会让 280 条评价从加分项变成扣分项。</div>
   <div class="fix"><b>改法：</b>① Judge.me 开启 "Review request email"（发货后 14 天自动邀评，附 10% 回购码换带图评价），让真订单评价累积起来带 Verified 标；② 现有评价若来自导入，建议保留但下调展示（不在首页/卡片用），或标明来源；③ 开 Trustpilot 免费账号并接 Judge.me 同步；④ 把 Instagram 买家秀（Tolstoy 已在收集）接到详情页评价区上方。</div>
 </div>
@@ -145,6 +154,8 @@
 <div class="finding">
   <h3><span class="sev p0">P0-5</span>政策页互相矛盾：两份运费政策打架，退货政策还是 Shopify 模板</h3>
   <div class="ev"><b>实测三处原文：</b>① /pages/shipping-returns：标准运费 $7.90、满 $150 免；快递 $14.99、满 $300 免；"If additional charges are required… we'll contact you before shipment"。② /policies/shipping-policy（页脚和结账页链接的正式政策）："All products are shipped directly from our <b>China warehouse</b>… custom duties and taxes… liable by the customer"，还提到 "Great Singapore Sale, Singles Day"。③ 结账页：Standard FREE、"duties included"、Express $19.90。三个数字（$7.90 / $14.99 / $19.90）和两种关税口径（客户自理 vs 已含）同时存在。<br>退货政策 /policies/refund-policy 原文含 "perishable goods (such as food, flowers, or plants)… hazardous materials, flammable liquids"——是 Shopify 默认模板未改；并写明 "we cannot accept returns on sale items"。保修页联系邮箱 care@alvaura.com，其他页 hello@alvaura.com；联系页说 20–36 小时回复，FAQ 说 24–48 小时。</div>
+  <div class="two"><div><div class="shot"><img loading="lazy" src="assets/shots/ev_policy_shipping_china.jpg" alt="Alvaura 正式运费政策原文：shipped directly from our China warehouse… duties and taxes… liable by the customer"></div><p class="shotcap">① 页脚 Shipping policy 原文：中国仓直发、关税客户自理。</p></div><div><div class="shot"><img loading="lazy" src="assets/shots/ev_page_shipping_returns_790.jpg" alt="Alvaura Shipping & Returns 页：$7.90 满 $150 免；Express $14.99 满 $300 免"></div><p class="shotcap">② Shipping & Returns 页：$7.90 / $14.99。</p></div></div>
+  <div class="two"><div><div class="shot"><img loading="lazy" src="assets/shots/ev_policy_refund_template.jpg" alt="Alvaura 退货政策原文：perishable goods (such as food, flowers, or plants)… hazardous materials"></div><p class="shotcap">③ Refund policy 原文：鲜花植物、易燃液体不可退——Shopify 默认模板。</p></div><div><div class="shot tall short"><img loading="lazy" src="assets/shots/checkout_shipping_us_desktop.jpg" alt="Alvaura 结账页：Standard FREE duties included，Express $19.90"></div><p class="shotcap">④ 结账页实测：Standard 免运 + duties included，Express $19.90——与 ①② 都对不上。</p></div></div>
   <div class="impact"><b>影响：</b>欧美买家下单前会点开 Shipping / Returns 看一眼；看到"中国仓直发、关税自理"会直接放弃（Missoma 差评里"卡关 13 天、品牌不吭声"就是这个恐惧），看到"鲜花植物不能退"会觉得这店不认真。</div>
   <div class="fix"><b>改法：</b>后台 Settings → Policies 重写 Shipping policy 和 Refund policy（以 shipping-returns 页 + 结账实际为准：Standard $7.90/满 $150 免/5–10 天/关税已含；Express $19.90/满 $300 免/3–5 天；30 天退换，Final Sale 商品在商品页明确标注）；统一邮箱和回复时效；删掉新加坡大促、中国仓字样（发货地可以写 "Ships from our Asia workshop, duties prepaid"）。</div>
 </div>
@@ -179,12 +190,16 @@
 <div class="finding">
   <h3><span class="sev p1">P1-8</span>教育内容写得不错，但全是纯文字、不在购买路径上</h3>
   <div class="ev"><b>实测：</b>About（3,801 字符）、Our Materials（6,289 字符，含 "2.5 microns… flash plating can be as thin as 0.02 microns"、"2-hour silica protection process"、"tested to resist saltwater corrosion"）、Lab-Grown Gemstones（4,605 字符）、FAQ（3,318 字符）——四个页面<b>图片数量全部为 0</b>，只能从页脚进入。这些恰恰是消费者最想要的"证据"（见市场洞察：83% 愿意考虑但 37% 信息不够）。</div>
+  <div class="shot"><img loading="lazy" src="assets/shots/ev_page_our_materials_textonly.jpg" alt="Alvaura Our Materials 页面：纯文字排版，无图片"></div>
+  <p class="shotcap">Our Materials 页实拍：6,289 字符纯文字，0 张图；最有说服力的 "2.5 microns vs 0.02 microns" 就埋在这里。</p>
   <div class="fix"><b>改法：</b>把 Our Materials 里的四个数字（2.5 μm / 0.02 μm / 2 小时防护 / 盐水测试）做成详情页的一张信息图；Lab-Grown 页做成 "Lab-grown vs Mined vs Moissanite vs CZ" 四栏对比表放进详情页折叠区；About 页加创始团队/工坊照片。</div>
 </div>
 
 <div class="finding">
   <h3><span class="sev p2">P2-2</span>社媒体量小，且简介把消费者不在意的"环保"放第一句</h3>
   <div class="ev"><b>实测：</b>Instagram @alvaurajewelry 3,160 粉丝 / 232 帖；TikTok @alvaurajewelry 68 粉丝 / 104 视频 / 2,120 赞；YouTube、Pinterest、Facebook 页面存在。IG 简介 "Effortless Luxury with a Glow · Lab-Grown Ethical Gems, No Mining, No Markups · Affordable. Authentic."。</div>
+  <div class="shot"><img loading="lazy" src="assets/shots/ev_social_tiktok.jpg" alt="Alvaura TikTok 主页：69 粉丝，2,133 赞，内容为开盒与手部实拍"></div>
+  <p class="shotcap">TikTok @alvaurajewelry 实拍（2026-09-16）：69 粉丝 / 2,133 赞；内容以开盒和手部实拍为主。</p>
   <div class="fix"><b>改法：</b>简介改为颜色与尺寸卖点（见 USP 页）；TikTok 104 条视频只有 68 粉，说明内容形式需要换——参考 Reddit 里最受欢迎的形式是"手上实拍 + 不同光线下的颜色变化"。</div>
 </div>
 
